@@ -1,0 +1,24 @@
+[package]
+authors = ["Tony B. <tonyb983@gmail.com>"]
+categories = ["data-structures", "parser-implementations"]
+description = "A tiny ID type that's like UUID except shorter and easier for a user to type in."
+edition = "2021"
+exclude = ["src/unused.rs"]
+keywords = ["id", "uuid", "tinyid"]
+license-file = "LICENSE.md"
+name = "tinyid"
+repository = "https://github.com/tonyb983/tinyid"
+version = "1.0.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+fastrand = "1.7.0"
+serde = { version = "1.0.136", features = ["derive"], optional = true }
+
+[dev-dependencies]
+pretty_assertions = "1.2.1"
+
+[features]
+default = []
+serde = ["dep:serde"]
