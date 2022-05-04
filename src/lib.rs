@@ -18,7 +18,7 @@
 //! let mut id = TinyId::random();
 //! assert!(id.is_valid());
 //! assert!(!id.is_null());
-//! id.make_invalid();
+//! id.make_null();
 //! assert!(!id.is_valid());
 //! assert!(id.is_null());
 //! assert_eq!(id, TinyId::null());
@@ -164,6 +164,11 @@ impl TinyId {
     #[must_use]
     pub fn is_null(self) -> bool {
         self.data == Self::NULL_DATA
+    }
+
+    /// Makes this [`TinyId`] null.
+    pub fn make_null(&mut self) {
+        self.data = Self::NULL_DATA;
     }
 
     fn from_str(s: &str) -> std::result::Result<Self, TinyIdError> {

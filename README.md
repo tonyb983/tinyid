@@ -23,7 +23,8 @@ use tinyid::TinyId;
 let mut id = TinyId::random();
 assert!(id.is_valid());
 assert!(!id.is_null());
-id.make_invalid();
+
+id.make_null();
 assert!(!id.is_valid());
 assert!(id.is_null());
 assert_eq!(id, TinyId::null());
