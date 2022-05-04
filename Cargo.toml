@@ -15,9 +15,6 @@ version = "1.0.0"
 fastrand = "1.7.0"
 serde = { version = "1.0.136", features = ["derive"], optional = true }
 
-[dev-dependencies]
-pretty_assertions = "1.2.1"
-
 [features]
 default = []
 serde = ["dep:serde"]
