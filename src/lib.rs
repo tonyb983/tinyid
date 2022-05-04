@@ -445,7 +445,7 @@ mod tests {
     #[cfg_attr(coverage, no_coverage)]
     fn basic_usage() {
         let id = TinyId::random();
-        println!("Created id {} ({:?})", id, id);
+        // println!("Created id {} ({:?})", id, id);
         assert!(id.is_valid());
         assert!(!id.is_null());
         let num = id.to_u64();
@@ -479,7 +479,7 @@ mod tests {
         assert!(result.is_ok());
         let id = result.unwrap();
         assert_eq!(id.to_string(), "abcdefgh");
-        println!("ID {} = u64 {}", id, id.to_u64());
+        // println!("ID {} = u64 {}", id, id.to_u64());
         let result = TinyId::from_bytes([b'!', b'b', b'c', b'd', b'e', b'f', b'g', b'h']);
         assert!(result.is_err());
 
