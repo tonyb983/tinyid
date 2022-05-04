@@ -3,7 +3,6 @@ authors = ["Tony B. <tonyb983@gmail.com>"]
 categories = ["data-structures", "parser-implementations"]
 description = "A tiny ID type that's like UUID except shorter and easier for a user to type in."
 edition = "2021"
-exclude = ["src/unused.rs"]
 keywords = ["id", "uuid", "tinyid", "shortid", "guid"]
 license-file = "LICENSE.md"
 name = "tinyid"
