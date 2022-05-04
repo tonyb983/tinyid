@@ -4,10 +4,10 @@ categories = ["data-structures", "parser-implementations"]
 description = "A tiny ID type that's like UUID except shorter and easier for a user to type in."
 edition = "2021"
 keywords = ["id", "uuid", "tinyid", "shortid", "guid"]
-license-file = "LICENSE.md"
+license = "MPL-2.0"
 name = "tinyid"
 repository = "https://github.com/tonyb983/tinyid"
-version = "1.0.0"
+version = "1.0.1"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
