@@ -6,7 +6,7 @@
 
 on: [push, pull_request]
 
-name: Rust (Cached)
+name: Rust - Check, Test, & Lint
 
 jobs:
   check:
