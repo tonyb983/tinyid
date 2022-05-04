@@ -344,6 +344,12 @@ impl std::fmt::Display for TinyId {
     }
 }
 
+impl Default for TinyId {
+    fn default() -> Self {
+        Self::null()
+    }
+}
+
 impl PartialEq<TinyId> for [u8; 8] {
     fn eq(&self, other: &TinyId) -> bool {
         self == &other.data
@@ -557,7 +563,7 @@ mod tests {
     #[cfg_attr(coverage, no_coverage)]
     #[allow(clippy::op_ref)]
     fn eqs() {
-        let id = TinyId::from_bytes_unchecked([b'a', b'b', b'c', b'd', b'e', b'f', b'g', b'h']);
+        let mut id = TinyId::from_bytes_unchecked([b'a', b'b', b'c', b'd', b'e', b'f', b'g', b'h']);
         let id2 = TinyId::from_u64_unchecked(id.to_u64());
         let id3 = TinyId::from_str_unchecked("abcdefgh");
         assert!(id.is_valid());
@@ -581,5 +587,11 @@ mod tests {
         assert!(&id == &[b'a', b'b', b'c', b'd', b'e', b'f', b'g', b'h'] as &[u8; 8]);
         let bytes: [u8; 8] = [b'a', b'b', b'c', b'd', b'e', b'f', b'g', b'h'];
         assert!(id == bytes);
+
+        id.make_null();
+        assert!(!id.is_valid());
+        assert!(id.is_null());
+        assert!(id.data == TinyId::NULL_DATA);
+        assert!(id == TinyId::default());
     }
 }
