@@ -52,4 +52,4 @@ jobs:
         continue-on-error: true  # Error is fine for lints I think
         with:
           command: clippy
-          args: -- -D warning
+          args: -- -D warnings
