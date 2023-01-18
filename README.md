@@ -14,7 +14,10 @@
 
 A small, 8-byte, ID type for use in rust applications that need a *pretty unique* identifier that is not required to be cryptographically secure / correct. They can be randomly generated but no work has been done to make sure that these random generations are secure (all RNG is done through the excellent [`fastrand`](https://crates.io/crates/fastrand) crate).
 
-I made this type because I needed *mostly* / *somewhat* random identifiers that could be easily read and retyped by a user, but would also prevent collisions in somewhat small (less than a million or so) applications.
+I made this type because I needed *mostly* / *somewhat* random identifiers that could be easily read and retyped by a user, but would also prevent collisions in somewhat small (less than a million or so) use-cases.
+
+Examples `collision.rs` or `collision_average.rs` (**beware, this can take quite a while to run**) can be run to get an idea of how many IDs can be generated before collision occurs, but this is ultimately down to luck I suppose.  
+*Generally, an average of 50-100 times gave me results in the 20 million range (IDs created before collision), but unlucky RNG has lead to results as low as 6-8 million.*
 
 ## Dependencies
 The crate has either one or two dependencies, depending on whether serialization is needed. `fastrand` is used for RNG, `serde` is used for de/serialization **only if** the `serde` feature flag is enabled.
