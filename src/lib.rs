@@ -57,7 +57,7 @@ impl std::fmt::Display for TinyIdError {
         match self {
             TinyIdError::InvalidLength => write!(f, "Invalid length"),
             TinyIdError::InvalidCharacters => write!(f, "Invalid characters"),
-            TinyIdError::Conversion(s) => write!(f, "Conversion error: {}", s),
+            TinyIdError::Conversion(s) => write!(f, "Conversion error: {s}"),
             TinyIdError::GenerationFailure => write!(f, "TinyId generation failed"),
         }
     }
@@ -249,6 +249,34 @@ impl TinyId {
     #[must_use]
     pub fn from_bytes_unchecked(bytes: [u8; 8]) -> Self {
         Self { data: bytes }
+    }
+
+    /// Checks whether this [`TinyId`] starts with the given string. This converts `self` to string so
+    /// any associated overhead is incurred.
+    #[must_use]
+    pub fn starts_with(&self, input: &str) -> bool {
+        match input.len() {
+            0 => true,
+            1..=8 => {
+                let s = self.to_string();
+                s.starts_with(input)
+            }
+            _ => false,
+        }
+    }
+
+    /// Checks whether this [`TinyId`] ends with the given string. This converts `self` to string so
+    /// any associated overhead is incurred.
+    #[must_use]
+    pub fn ends_with(&self, input: &str) -> bool {
+        match input.len() {
+            0 => true,
+            1..=8 => {
+                let s = self.to_string();
+                s.ends_with(input)
+            }
+            _ => false,
+        }
     }
 
     /// Create a new random [`TinyId`].

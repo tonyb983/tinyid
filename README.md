@@ -16,11 +16,19 @@ A small, 8-byte, ID type for use in rust applications that need a *pretty unique
 
 I made this type because I needed *mostly* / *somewhat* random identifiers that could be easily read and retyped by a user, but would also prevent collisions in somewhat small (less than a million or so) applications.
 
+## Dependencies
+The crate has either one or two dependencies, depending on whether serialization is needed. `fastrand` is used for RNG, `serde` is used for de/serialization **only if** the `serde` feature flag is enabled.
+
 ## Example
+Further examples can be found in [./examples/basic.rs](./examples/basic.rs).
+
+
 ```rust
 use tinyid::TinyId;
 
+// Generate a random ID.
 let mut id = TinyId::random();
+// Ensure that the ID is valid.
 assert!(id.is_valid());
 assert!(!id.is_null());
 
@@ -29,3 +37,6 @@ assert!(!id.is_valid());
 assert!(id.is_null());
 assert_eq!(id, TinyId::null());
 ```
+
+## Features
+The crate only has one feature, `serde`, which will enable serde serialization and deserialization of the `TinyId` type. It will also bring in the `serde` dependency.
